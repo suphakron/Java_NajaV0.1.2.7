@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Java_Naja</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_chap1">Chap1Activity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="Content1_1Leader">บทที่ 1\nภาษาคอมพิวเตอร์และการพัฒนาโปรแกรม</string>
+    <string name="Content1_1Header">1.1 โปรแกรมภาษา</string>
+    <string name="Content1_1Body">\t\t โปรแกรมคอมพิวเตอร์ไม่ว่าจะเขียนด้วยภาษาระดับต่ำหรือภาษาระดับสูงจะต้องแปลงภาษาให้เป็นรหัสภาษาเครื่องคอมพิวเตอร์ก่อนภาษาคอมพิวเตอร์เป็นการนำชุดคำสั่งแต่ละคำสั่งมาต่อกันให้ทำงาน\n\t\t ภาษาคอมพิวเตอร์ที่ใช้รหัสนีโมนิกหรือรหัสเลขฐานสองในการเขียนโปรแกรม เรียกว่า ภาษาแอสเซมบลี (Assembly Language)\n\t\t การเขียนโปรแกรมด้วยภาษาแอสเซมบลีจะต้องใช้ตัวแปลให้เป็นภาษาเครื่องตัวแปลนี้เรียกว่า แอสเซมเบลอร์ (Assembler)</string>
+
+    <string name="action_example">Example action</string>
+    <string name="title_activity_chap1_1">Chap1_1Activity</string>
+</resources>
