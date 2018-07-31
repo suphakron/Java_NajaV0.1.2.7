@@ -6,14 +6,45 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_chap1">Chap1Activity</string>
+    <string name="title_activity_chap1">บทที่ 1 ภาษาคอมพิวเตอร์และการพัฒนาโปรแกรม</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
 
+    <!--CHAPTER 1-1-->
     <string name="Content1_1Leader">บทที่ 1\nภาษาคอมพิวเตอร์และการพัฒนาโปรแกรม</string>
     <string name="Content1_1Header">1.1 โปรแกรมภาษา</string>
-    <string name="Content1_1Body">\t\t โปรแกรมคอมพิวเตอร์ไม่ว่าจะเขียนด้วยภาษาระดับต่ำหรือภาษาระดับสูงจะต้องแปลงภาษาให้เป็นรหัสภาษาเครื่องคอมพิวเตอร์ก่อนภาษาคอมพิวเตอร์เป็นการนำชุดคำสั่งแต่ละคำสั่งมาต่อกันให้ทำงาน\n\t\t ภาษาคอมพิวเตอร์ที่ใช้รหัสนีโมนิกหรือรหัสเลขฐานสองในการเขียนโปรแกรม เรียกว่า ภาษาแอสเซมบลี (Assembly Language)\n\t\t การเขียนโปรแกรมด้วยภาษาแอสเซมบลีจะต้องใช้ตัวแปลให้เป็นภาษาเครื่องตัวแปลนี้เรียกว่า แอสเซมเบลอร์ (Assembler)</string>
+    <string name="Content1_1Body_1">\t\t โปรแกรมคอมพิวเตอร์ไม่ว่าจะเขียนด้วยภาษาระดับต่ำหรือภาษาระดับสูงจะต้องแปลงภาษาให้เป็นรหัสภาษาเครื่องคอมพิวเตอร์ก่อนภาษาคอมพิวเตอร์เป็นการนำชุดคำสั่งแต่ละคำสั่งมาต่อกันให้ทำงาน\n\t\t
+        ภาษาคอมพิวเตอร์ที่ใช้รหัสนีโมนิกหรือรหัสเลขฐานสองในการเขียนโปรแกรม เรียกว่า ภาษาแอสเซมบลี (Assembly Language)\n\t\t
+        การเขียนโปรแกรมด้วยภาษาแอสเซมบลีจะต้องใช้ตัวแปลให้เป็นภาษาเครื่องตัวแปลนี้เรียกว่า แอสเซมเบลอร์ (Assembler)</string>
+    <string name="Content1_1Body_2">\t\t การเขียนโปรแกรมด้วยภาษาระดับสูงจะมีตัวแปลสองประเภท คือ อินเทอร์พรีเตอร์
+        (Interpreter) การทำงานของตัวอินเทอร์พรีเตอร์จะแปลความหมายของทีละคำสั่ง
+        และอีกคำสั่งคือ คอมไพเลอร์ (Compiler) การทำงานจะแปลโปรแกรมต้นฉบับทั้งหมด
+        และโปรแกรมจะทำงานได้เร็วขึ้นเพราะไม่ต้องแปลคำสั่งถัดไปอีก</string>
+
+    <!--CHAPTER 1-2-->
+    <string name="Content1_2Header">1.2 ภาษาจาวา</string>
+    <string name="Content1_2Body_1">\t\t ภาษาจาวา (JAVA)
+        พัฒนาโดยบริษัท Sun microsystem
+        โดยพัฒนาให้เป็นภาษาใช้ในการเขียนโปรแกรมเชิงวัตถุ
+        (Object-Oriented Programming)
+        สามารถทำงานบนเครื่องที่ต่างกันได้โดยไม่ต้องคอมไพใหม่ เรียกว่า
+        Platform independent</string>
+    <string name="Content1_2Body_2">
+        Write Once, run anywhere\n(เขียนครั้งเดียวรันได้ทุกแพลตฟอร์ม)</string>
+
+    <!--CHAPTER 1-3-->
+    <string name="Content1_3Header">1.3 ชุดพัฒนาภาษาจาวา</string>
+    <string name="Content1_3Body_1">\t\t สำหรับชุดพัฒนาโปรเกรมภาษาจาวา มี 3 รุ่น คือ
+		\n\t\t J2SE หรือ Java 2 Standard Edition
+		\n\t\t J2EE หรือ Java 2 Enterprise Edition
+		\n\t\t J2ME หรือ Java 2 Micro Edition </string>
+    <string name="Content1_3Body_2">\t\t ขั้นตอนในการพัฒนาโปรแกรม \n\t\t\t\t
+    1. เขียนโปรแกรมต้นฉบับด้วยเอดิเตอร์ ให้มีนามสกุล .java เช่น Hello.java \n\t\t\t\t
+    2. คอมไพล์โปรแกรมโดยใช้โปรแกรมชื่อ java.exe \n\t\t\t\t
+    3. จะได้ผลลัพธ์ออกมาเป็นไบต์โค้ด มีนามสกุลเป็น .class \n\t\t\t\t
+    4. รันโปรแกรมโดยใช้ตัวอินเทอร์พรีเตอร์ชื่อ java.exe โปรแกรมจะทำงานตามที่เขียนไว้</string>
+
 
     <string name="action_example">Example action</string>
     <string name="title_activity_chap1_1">Chap1_1Activity</string>

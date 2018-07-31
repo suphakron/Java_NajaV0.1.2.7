@@ -1,20 +1,14 @@
 package com.example.theba.java_naja;
 
 import android.Manifest;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Path;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,15 +18,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
-public class Chap1_1Activity extends AppCompatActivity {
-
-    ImageView imageview;
-    Bitmap bitmap;
+public class Chap1_3Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chap1_1);
+        setContentView(R.layout.activity_chap1_3);
 
         TextView CopBODY = (TextView) findViewById(R.id.Body1);
         CopBODY.setTextIsSelectable(true);
@@ -47,7 +38,7 @@ public class Chap1_1Activity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
 
         ImageView SavePIC1 = (ImageView) findViewById(R.id.Pic1);
-        SavePIC1.setOnClickListener(new DoubleClickListener() {
+        SavePIC1.setOnClickListener(new Chap1_3Activity.DoubleClickListener() {
             @Override
             public void onSingleClick(View v) {
 
@@ -55,16 +46,16 @@ public class Chap1_1Activity extends AppCompatActivity {
             @Override
             public void onDoubleClick(View v) {
 
-                ActivityCompat.requestPermissions(Chap1_1Activity.this ,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+                ActivityCompat.requestPermissions(Chap1_3Activity.this ,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
 
-                Bitmap image= BitmapFactory.decodeResource(getResources(),R.drawable.p1_1);
+                Bitmap image= BitmapFactory.decodeResource(getResources(),R.drawable.p1_3);
 
                 File path = Environment.getExternalStorageDirectory();
 
                 File dir = new File(path+"/JAVA NaJa/saved/");
                 dir.mkdirs();
 
-                File file = new File(dir,"รูปที่ 1.1 ขั้นตอนการแปลงภาษาแอสเซมบลีเป็นภาษาเครื่อง.jpg");
+                File file = new File(dir,"รูปที่ 1.3 Java.jpg");
 
                 OutputStream out = null;
 
@@ -89,58 +80,11 @@ public class Chap1_1Activity extends AppCompatActivity {
 //
 //                        URI = Uri.parse(ImagePath);
 //
-                       Toast.makeText(Chap1_1Activity.this, "Image Saved Successfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(Chap1_3Activity.this, "Image Saved Successfully", Toast.LENGTH_LONG).show();
             }
         });
+    }
 
-        ImageView SavePIC2 = (ImageView) findViewById(R.id.Pic2);
-        SavePIC2.setOnClickListener(new DoubleClickListener() {
-            @Override
-            public void onSingleClick(View v) {
-
-            }
-
-            @Override
-            public void onDoubleClick(View v) {
-
-                ActivityCompat.requestPermissions(Chap1_1Activity.this ,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
-
-                Bitmap image= BitmapFactory.decodeResource(getResources(),R.drawable.p1_2);
-
-                File path = Environment.getExternalStorageDirectory();
-
-                File dir = new File(path+"/JAVA NaJa/saved/");
-                dir.mkdirs();
-
-                File file = new File(dir,"รูปที่ 1.2 ขั้นตอนการแปลโปรแกรม.jpg");
-
-                OutputStream out = null;
-
-                try {
-                    out = new FileOutputStream(file);
-                    image.compress(Bitmap.CompressFormat.PNG, 100, out);
-                    out.flush();
-                    out.close();
-                }   catch (java.io.IOException e) {
-                    e.printStackTrace();
-                }
-//                        Drawable myDrawable = getResources().getDrawable(R.drawable.picchapter1_1);
-//
-//                        bitmap = ((BitmapDrawablele)myDrawable).getBitmap();
-//
-//                        ImagePath = MediaStore.Images.Media.insertImage(
-//                                getContentResolver(),
-//                                image,
-//                                "demo_image",
-//                                "demo_image"
-//                        );
-//
-//                        URI = Uri.parse(ImagePath);
-
-                Toast.makeText(Chap1_1Activity.this, "Image Saved Successfully", Toast.LENGTH_LONG).show();
-            }
-        });
-        }
     public abstract class DoubleClickListener implements View.OnClickListener {
 
         private static final long DOUBLE_CLICK_TIME_DELTA = 300;//milliseconds

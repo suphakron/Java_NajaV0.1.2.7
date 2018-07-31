@@ -27,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.7"
                 android:orientation="vertical"
-                android:weightSum="7">
+                android:weightSum="5">
 
                 <TextView
                     android:id="@+id/Leader"
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.15"
                     android:textColor="#000000"
-                    android:text="@string/Content1_1Header" />
+                    android:text="@string/Content1_2Header" />
 
                 <TextView
                     android:id="@+id/Body1"
@@ -54,34 +54,24 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:lineSpacingExtra="5sp"
-                    android:text="@string/Content1_1Body_1"
+                    android:text="@string/Content1_2Body_1"
                     android:textColor="#000000" />
 
-                <ImageView
-                    android:id="@+id/Pic1"
-                    android:layout_gravity="center"
-                    android:src="@drawable/picchapter1_1"
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="125dp"
+                    android:layout_height="wrap_content"
                     />
 
                 <TextView
+                    android:textAlignment="center"
                     android:id="@+id/Body2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="16dp"
                     android:layout_weight="0"
                     android:lineSpacingExtra="5sp"
                     android:textColor="#000000"
-                    android:text="@string/Content1_1Body_2" />
-
-                <ImageView
-                    android:id="@+id/Pic2"
-                    android:layout_gravity="center"
-                    android:src="@drawable/picchapter1_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="185dp"
-                    android:paddingTop="10dp"
-                    />
+                    android:text="@string/Content1_2Body_2" />
 
             </LinearLayout>
             <TextView
