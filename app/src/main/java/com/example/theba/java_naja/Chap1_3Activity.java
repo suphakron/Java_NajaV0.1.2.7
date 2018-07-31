@@ -80,7 +80,7 @@ public class Chap1_3Activity extends AppCompatActivity {
 //
 //                        URI = Uri.parse(ImagePath);
 //
-                Toast.makeText(Chap1_3Activity.this, "Image Saved Successfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(Chap1_3Activity.this, "Image Saved Successfully \n\n" + dir, Toast.LENGTH_LONG).show();
             }
         });
     }
