@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class Chap1_2Activity extends AppCompatActivity {
@@ -22,8 +23,21 @@ public class Chap1_2Activity extends AppCompatActivity {
         TextView CopHead = (TextView) findViewById(R.id.Header);
         CopHead.setTextIsSelectable(true);
 
-        getSupportActionBar().setTitle("บทที่ 1 ภาษาคอมพิวเตอร์และการพัฒนาโปรแกรม");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(null);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00000000")));
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                //do whatever
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

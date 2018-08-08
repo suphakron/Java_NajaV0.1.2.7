@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,8 +35,9 @@ public class Chap1_3Activity extends AppCompatActivity {
         TextView CopHead = (TextView) findViewById(R.id.Header);
         CopHead.setTextIsSelectable(true);
 
-        getSupportActionBar().setTitle("บทที่ 1 ภาษาคอมพิวเตอร์และการพัฒนาโปรแกรม");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(null);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00000000")));
 
         ImageView SavePIC1 = (ImageView) findViewById(R.id.Pic1);
         SavePIC1.setOnClickListener(new Chap1_3Activity.DoubleClickListener() {
@@ -43,19 +45,20 @@ public class Chap1_3Activity extends AppCompatActivity {
             public void onSingleClick(View v) {
 
             }
+
             @Override
             public void onDoubleClick(View v) {
 
-                ActivityCompat.requestPermissions(Chap1_3Activity.this ,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+                ActivityCompat.requestPermissions(Chap1_3Activity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 
-                Bitmap image= BitmapFactory.decodeResource(getResources(),R.drawable.p1_3);
+                Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.p1_3);
 
                 File path = Environment.getExternalStorageDirectory();
 
-                File dir = new File(path+"/JAVA NaJa/saved/");
+                File dir = new File(path + "/JAVA NaJa/saved/");
                 dir.mkdirs();
 
-                File file = new File(dir,"รูปที่ 1.3 Java.jpg");
+                File file = new File(dir, "รูปที่ 1.3 Java.jpg");
 
                 OutputStream out = null;
 
@@ -64,7 +67,7 @@ public class Chap1_3Activity extends AppCompatActivity {
                     image.compress(Bitmap.CompressFormat.PNG, 100, out);
                     out.flush();
                     out.close();
-                }   catch (java.io.IOException e) {
+                } catch (java.io.IOException e) {
                     e.printStackTrace();
                 }
 //                        Drawable myDrawable = getResources().getDrawable(R.drawable.picchapter1_1);
@@ -94,7 +97,7 @@ public class Chap1_3Activity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             long clickTime = System.currentTimeMillis();
-            if (clickTime - lastClickTime < DOUBLE_CLICK_TIME_DELTA){
+            if (clickTime - lastClickTime < DOUBLE_CLICK_TIME_DELTA) {
                 onDoubleClick(v);
             } else {
                 onSingleClick(v);
@@ -103,7 +106,18 @@ public class Chap1_3Activity extends AppCompatActivity {
         }
 
         public abstract void onSingleClick(View v);
-        public abstract void onDoubleClick(View v);
-    }
 
+        public abstract void onDoubleClick(View v);
+        }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                //do whatever
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
