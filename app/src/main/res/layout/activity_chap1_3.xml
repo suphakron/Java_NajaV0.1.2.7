@@ -77,6 +77,20 @@
                     android:text="@string/Content1_3Body_2"
                     android:textColor="#000000" />
 
+                <Button
+                    android:id="@+id/Next_Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:textColor="#d78c01"
+                    android:drawableTop="@android:drawable/ic_menu_send"
+                    android:text="หน้าหลัก" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2" />
+
             </LinearLayout>
             <TextView
                 android:layout_weight="7.2"

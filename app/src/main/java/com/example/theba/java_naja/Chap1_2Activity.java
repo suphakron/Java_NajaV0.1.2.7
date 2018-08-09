@@ -1,10 +1,13 @@
 package com.example.theba.java_naja;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Chap1_2Activity extends AppCompatActivity {
@@ -22,6 +25,15 @@ public class Chap1_2Activity extends AppCompatActivity {
 
         TextView CopHead = (TextView) findViewById(R.id.Header);
         CopHead.setTextIsSelectable(true);
+
+        Button Nextpage = (Button) findViewById(R.id.Next_Button);
+        Nextpage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Next = new Intent(Chap1_2Activity.this,Chap1_3Activity.class);
+                startActivity(Next);
+            }
+        });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(null);

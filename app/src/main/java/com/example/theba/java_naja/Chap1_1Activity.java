@@ -1,6 +1,7 @@
 package com.example.theba.java_naja;
 
 import android.Manifest;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +44,15 @@ public class Chap1_1Activity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(null);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00000000")));
+
+        Button Nextpage = (Button) findViewById(R.id.Next_Button);
+        Nextpage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Next = new Intent(Chap1_1Activity.this,Chap1_2Activity.class);
+                startActivity(Next);
+            }
+        });
 
         ImageView SavePIC1 = (ImageView) findViewById(R.id.Pic1);
         SavePIC1.setOnClickListener(new DoubleClickListener() {
