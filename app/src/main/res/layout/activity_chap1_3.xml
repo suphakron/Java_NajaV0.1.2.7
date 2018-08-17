@@ -82,9 +82,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:textColor="#d78c01"
-                    android:drawableTop="@android:drawable/ic_menu_send"
-                    android:text="หน้าหลัก" />
+                    android:drawableTop="@android:drawable/ic_media_rew"
+                    android:text="หน้าหลัก"
+                    android:textColor="#d78c01" />
 
                 <TextView
                     android:layout_width="match_parent"

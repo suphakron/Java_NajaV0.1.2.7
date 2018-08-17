@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent Chapter1 = new Intent(MainActivity.this,Chap1Activity.class);
                 startActivity(Chapter1);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 

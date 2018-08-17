@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +19,8 @@ import android.widget.Button;
 
 public class Chap1Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+//    float x1, x2, y1, y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class Chap1Activity extends AppCompatActivity
             public void onClick(View view) {
                 Intent Chapter1_1 = new Intent(Chap1Activity.this,Chap1_1Activity.class);
                 startActivity(Chapter1_1);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -63,6 +67,7 @@ public class Chap1Activity extends AppCompatActivity
             public void onClick(View view) {
                 Intent Chapter1_2 = new Intent(Chap1Activity.this,Chap1_2Activity.class);
                 startActivity(Chapter1_2);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -72,6 +77,7 @@ public class Chap1Activity extends AppCompatActivity
             public void onClick(View view) {
                 Intent Chapter1_3 = new Intent(Chap1Activity.this,Chap1_3Activity.class);
                 startActivity(Chapter1_3);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -117,7 +123,11 @@ public class Chap1Activity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_HOME) {
+            Intent intent = new Intent(Chap1Activity.this, MainActivity.class);
             finish();
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
@@ -134,5 +144,30 @@ public class Chap1Activity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+//    @Override
+//    public boolean onTouchEvent(MotionEvent Touchevent){
+//        switch (Touchevent.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                x1 = Touchevent.getX();
+//                y1 = Touchevent.getY();
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                x2 = Touchevent.getX();
+//                y2 = Touchevent.getY();
+//                if (x1 < x2) {
+//                    Intent i = new Intent(Chap1Activity.this, MainActivity.class);
+//                    startActivity(i);
+//                }
+//                break;
+//        }
+//        return false;
+//    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

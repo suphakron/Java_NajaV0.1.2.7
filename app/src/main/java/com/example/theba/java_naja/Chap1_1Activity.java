@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,6 +27,8 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 public class Chap1_1Activity extends AppCompatActivity {
+
+//    float x1, x2, y1, y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class Chap1_1Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent Next = new Intent(Chap1_1Activity.this,Chap1_2Activity.class);
                 startActivity(Next);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -182,5 +186,30 @@ public class Chap1_1Activity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+//    @Override
+//    public boolean onTouchEvent(MotionEvent Touchevent){
+//        switch (Touchevent.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                x1 = Touchevent.getX();
+//                y1 = Touchevent.getY();
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                x2 = Touchevent.getX();
+//                y2 = Touchevent.getY();
+//                if (x1 < x2) {
+//                    Intent i = new Intent(Chap1_1Activity.this, Chap1_2Activity.class);
+//                    startActivity(i);
+//                }
+//                break;
+//        }
+//        return false;
+//    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

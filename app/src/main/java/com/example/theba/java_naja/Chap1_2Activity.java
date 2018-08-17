@@ -32,6 +32,7 @@ public class Chap1_2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent Next = new Intent(Chap1_2Activity.this,Chap1_3Activity.class);
                 startActivity(Next);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -51,5 +52,11 @@ public class Chap1_2Activity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
