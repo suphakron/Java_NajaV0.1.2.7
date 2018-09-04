@@ -1,6 +1,7 @@
 package com.example.theba.java_naja;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -28,12 +30,13 @@ import java.io.OutputStream;
 
 public class Chap1_1Activity extends AppCompatActivity {
 
-//    float x1, x2, y1, y2;
+    float x1, x2, y1, y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chap1_1);
+        //mScroll = (ScrollView)findViewById(R.id.mScrollView);
 
         TextView CopBODY = (TextView) findViewById(R.id.Body1);
         CopBODY.setTextIsSelectable(true);
@@ -212,4 +215,45 @@ public class Chap1_1Activity extends AppCompatActivity {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
+
+    public boolean onInterceptTouchEvent(MotionEvent touchevent) {
+        switch (touchevent.getAction()) {
+// when user first touches the screen we get x and y coordinate
+            case MotionEvent.ACTION_DOWN: {
+                x1 = touchevent.getX();
+                y1 = touchevent.getY();
+                break;
+            }
+            case MotionEvent.ACTION_UP: {
+                x2 = touchevent.getX();
+                y2 = touchevent.getY();
+//if left to right sweep event on screen
+                if (x1 < x2) {
+                    //mScroll.requestDisallowInterceptTouchEvent(true);
+                    Toast.makeText(this, "Left to Right Swap Performed", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(Chap1_1Activity.this, Chap1Activity.class);
+                    startActivity(i);
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                }
+// if right to left sweep event on screen
+                if (x1 > x2) {
+                    Toast.makeText(this, "Right to Left Swap Performed", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(Chap1_1Activity.this, Chap1_2Activity.class);
+                    startActivity(i);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+// if UP to Down sweep event on screen
+                if (y1 < y2) {
+//Toast.makeText(this, "UP to Down Swap Performed", Toast.LENGTH_LONG).show();
+                }
+//if Down to UP sweep event on screen
+                if (y1 > y2) {
+// Toast.makeText(this, "Down to UP Swap Performed", Toast.LENGTH_LONG).show();
+                }
+                break;
+            }
+        }
+        return false;
+    }
+
 }
