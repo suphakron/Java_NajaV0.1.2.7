@@ -13,13 +13,11 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="Java NaJa"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="Java NaJa">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity
             android:name=".Chap1Activity"
@@ -28,7 +26,11 @@
         <activity android:name=".Chap1_1Activity" />
         <activity android:name=".Chap1_2Activity" />
         <activity android:name=".Chap1_3Activity" />
-        <activity android:name=".LoginActivity"></activity>
-    </application>
 
+        <activity android:name=".Main2Activity"
+            android:label="MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+    </application>
 </manifest>

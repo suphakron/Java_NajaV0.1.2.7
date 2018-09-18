@@ -35,4 +35,13 @@
         </menu>
     </item>
 
+    <item android:title="Signout">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/logout"
+                android:title="ออกจากระบบ" />
+        </menu>
+    </item>
+
 </menu>
