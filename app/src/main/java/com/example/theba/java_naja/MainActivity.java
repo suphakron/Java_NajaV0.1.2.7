@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         final TextView navUsername = (TextView) headerView.findViewById(R.id.textEmail);
         //email = email.concat(" ").concat(user.getEmail());
+
+        //if login with facebook then get TOKEN and show Name
         if(AccessToken.getCurrentAccessToken()!=null) {
             String email = user.getDisplayName();
             navUsername.setText(email);
