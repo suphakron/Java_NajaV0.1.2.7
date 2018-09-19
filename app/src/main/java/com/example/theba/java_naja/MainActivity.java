@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        String email = user.getEmail();
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -50,7 +52,13 @@ public class MainActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         final TextView navUsername = (TextView) headerView.findViewById(R.id.textEmail);
         //email = email.concat(" ").concat(user.getEmail());
-        navUsername.setText(email);
+        if(AccessToken.getCurrentAccessToken()!=null) {
+            String email = user.getDisplayName();
+            navUsername.setText(email);
+        }else {
+            String email = user.getEmail();
+            navUsername.setText(email);
+        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -144,6 +152,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_logout) {
             mAuth.signOut();
+            LoginManager.getInstance().logOut();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
