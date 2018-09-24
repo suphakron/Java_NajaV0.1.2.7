@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -111,8 +112,10 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //Google Sign in
-        mGoogleBtn = findViewById(R.id.signin_Google_button);
+        mGoogleBtn = findViewById(R.id.button_google_login);
         mGoogleBtn.setSize(SignInButton.SIZE_STANDARD);
+        TextView edit_textGoogle = (TextView) mGoogleBtn.getChildAt(0);
+        edit_textGoogle.setText("ลงชื่อเข้าใช้ด้วยบัญชี Google");
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -148,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Authentication Success.",
                         Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
-                handleFacebookAccessToken(loginResult.getAccessToken());
+                handleFacebookAccessToken(loginResult.getAccessToken()); //this code for login
                 // //LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("public_profile"));
             }
 
