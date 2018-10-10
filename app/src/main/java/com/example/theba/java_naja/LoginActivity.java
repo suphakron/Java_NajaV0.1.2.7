@@ -1,5 +1,6 @@
 package com.example.theba.java_naja;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -152,6 +153,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken()); //this code for login
+                final ProgressDialog progressDialog = ProgressDialog.show(LoginActivity.this, "Please wait...", "Loading...", true);
                 // //LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("public_profile"));
             }
 
@@ -174,11 +176,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        TextView register = (TextView) findViewById(R.id.regis);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            }
+        });
+
     }
 
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        final ProgressDialog progressDialog = ProgressDialog.show(LoginActivity.this, "Please wait...", "Loading...", true);
     }
 
     @Override
