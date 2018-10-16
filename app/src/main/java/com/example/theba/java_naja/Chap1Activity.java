@@ -3,6 +3,7 @@ package com.example.theba.java_naja;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.MotionEvent;
@@ -18,8 +19,14 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
+import com.facebook.Profile;
+import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Chap1Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -63,6 +70,32 @@ public class Chap1Activity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         TextView navUsername = (TextView) headerView.findViewById(R.id.textEmail);
         navUsername.setText(email);
+
+        CircleImageView img_profile = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.imageProfile);
+
+        if(AccessToken.getCurrentAccessToken()!=null) {
+            email = user.getDisplayName();
+            navUsername.setText(email);
+            //AccessToken userToken = AccessToken.getCurrentAccessToken();
+            String userID = Profile.getCurrentProfile().getId();
+            String url_pic = "http://graph.facebook.com/"+userID+"/picture?type=large";
+//            Bitmap Bitmap = getFacebookProfilePicture(userID);
+//            img_profile.setImageBitmap(Bitmap);
+            Picasso.get().load(url_pic).into(img_profile);
+        } else {
+            email = user.getEmail();
+            navUsername.setText(email);
+        }
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if(firebaseAuth.getCurrentUser() == null){
+
+                    startActivity(new Intent(Chap1Activity.this, LoginActivity.class));
+                }
+            }
+        };
 
         Button button_chap1_1 = (Button) findViewById(R.id.img_Button1);
 
@@ -156,6 +189,7 @@ public class Chap1Activity extends AppCompatActivity
 
         } else if (id == R.id.nav_logout) {
             mAuth.signOut();
+            LoginManager.getInstance().logOut();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -186,5 +220,11 @@ public class Chap1Activity extends AppCompatActivity
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
     }
 }

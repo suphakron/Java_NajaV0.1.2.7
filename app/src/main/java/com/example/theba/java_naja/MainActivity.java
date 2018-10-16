@@ -1,10 +1,13 @@
 package com.example.theba.java_naja;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.media.session.MediaSession;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,17 +15,25 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
+import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.net.URL;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,19 +56,33 @@ public class MainActivity extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
 
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         View headerView = navigationView.getHeaderView(0);
         final TextView navUsername = (TextView) headerView.findViewById(R.id.textEmail);
         //email = email.concat(" ").concat(user.getEmail());
+        CircleImageView img_profile = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.imageProfile);
 
         //if login with facebook then get TOKEN and show Name
         if(AccessToken.getCurrentAccessToken()!=null) {
             String email = user.getDisplayName();
             navUsername.setText(email);
-        }else {
+
+            //AccessToken userToken = AccessToken.getCurrentAccessToken();
+            String userID = Profile.getCurrentProfile().getId();
+            String url_pic = "http://graph.facebook.com/"+userID+"/picture?type=large";
+//            Bitmap Bitmap = getFacebookProfilePicture(userID);
+//            img_profile.setImageBitmap(Bitmap);
+
+            Picasso.get().load(url_pic).into(img_profile);
+
+            //Drawable image_test = getResources().getDrawable(R.drawable.left_arrow);
+            //img_profile.setImageDrawable(image_test);
+
+
+            //Image image_pro = user.getPhotoUrl("https://graph.facebook.com/" + userID + "/picture?type=large");
+        } else {
             String email = user.getEmail();
             navUsername.setText(email);
         }
@@ -68,7 +93,6 @@ public class MainActivity extends AppCompatActivity
                 if(firebaseAuth.getCurrentUser() == null){
 
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
-
                 }
             }
         };
@@ -118,6 +142,27 @@ public class MainActivity extends AppCompatActivity
 //        getMenuInflater().inflate(R.menu.main, menu);
 //        return true;
 //    }
+
+//    public static Bitmap getFacebookProfilePicture(String userID) throws SocketException, SocketTimeoutException, MalformedURLException, IOException, Exception
+//    {
+//        String imageURL;
+//
+//        Bitmap bitmap = null;
+//        imageURL = "http://graph.facebook.com/"+userID+"/picture?type=large";
+//        InputStream in = (InputStream) new URL(imageURL).getContent();
+//        bitmap = BitmapFactory.decodeStream(in);
+//
+//        return bitmap;
+//    }
+
+    public static Bitmap getFacebookProfilePicture(String userID) throws IOException {
+        URL imageURL = new URL("https://graph.facebook.com/" + userID + "/picture?type=large");
+        Bitmap bitmap = BitmapFactory.decodeStream(imageURL.openConnection().getInputStream());
+
+        return bitmap;
+    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

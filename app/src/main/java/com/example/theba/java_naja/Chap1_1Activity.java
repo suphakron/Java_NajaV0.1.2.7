@@ -120,7 +120,7 @@ public class Chap1_1Activity extends AppCompatActivity {
 
                 ActivityCompat.requestPermissions(Chap1_1Activity.this ,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
 
-                Bitmap image= BitmapFactory.decodeResource(getResources(),R.drawable.p1_2);
+                Bitmap image = BitmapFactory.decodeResource(getResources(),R.drawable.p1_2);
 
                 File path = Environment.getExternalStorageDirectory();
 
