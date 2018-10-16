@@ -15,11 +15,11 @@
         <activity
             android:name=".MainActivity"
             android:label="Java NaJa"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Chap1Activity"
             android:label="@string/title_activity_chap1"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Chap1_1Activity" />
         <activity android:name=".Chap1_2Activity" />
         <activity android:name=".Chap1_3Activity" />
@@ -51,7 +51,8 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".ResetPasswordActivity"></activity>
     </application>
 
 </manifest>
