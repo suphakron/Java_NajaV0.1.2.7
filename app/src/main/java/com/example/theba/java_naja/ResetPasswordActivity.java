@@ -29,7 +29,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.colorOpacity));
+        getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.colorPrimary));
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_reset_password);
         mAuth = FirebaseAuth.getInstance();
