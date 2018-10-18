@@ -107,52 +107,13 @@
             android:inputType="textEmailAddress" />
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/etPasswordLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true"
-        android:layout_marginBottom="0dp">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/pwduser"
-            android:background="@drawable/backwithborder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"
-            android:hint="รหัสผ่าน"
-            android:inputType="textPassword" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/etConfirmPasswordLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true"
-        android:layout_marginBottom="0dp">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/pwduser2"
-            android:background="@drawable/backwithborder"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"
-            android:hint="ยืนยันรหัสผ่าน"
-            android:inputType="textPassword" />
-    </android.support.design.widget.TextInputLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <Button
         android:id="@+id/accept"
         android:layout_width="107dp"
         android:layout_height="65dp"
-        android:layout_marginLeft="260dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginRight="30dp"
         android:text="บันทึก"
         android:textSize="15dp" />
 

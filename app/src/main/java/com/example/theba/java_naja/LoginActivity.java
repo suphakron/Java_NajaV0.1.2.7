@@ -153,7 +153,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken()); //this code for login
-                final ProgressDialog progressDialog = ProgressDialog.show(LoginActivity.this, "Please wait...", "Loading...", true);
+                final ProgressDialog progressDialog = ProgressDialog.show(LoginActivity.this, "Please wait...", "Loading...", true, true);
                 // //LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("public_profile"));
             }
 
@@ -197,7 +197,7 @@ public class LoginActivity extends AppCompatActivity {
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
-        final ProgressDialog progressDialog = ProgressDialog.show(LoginActivity.this, "Please wait...", "Loading...", true);
+        final ProgressDialog progressDialog = ProgressDialog.show(LoginActivity.this, "Please wait...", "Loading...", true, true);
     }
 
     @Override
