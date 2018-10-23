@@ -1,8 +1,11 @@
 package com.example.theba.java_naja;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +20,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
@@ -24,7 +29,15 @@ import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -33,7 +46,13 @@ public class Chap1Activity extends AppCompatActivity
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference myRef ,current_user_db_score, current_user_db_fname, current_user_db_lname, current_user_db;
+    private String user_id, Score;
     private String email;
+    private TextView score, Fname, Lname;
+    private int mScore;
+    private Button button_chap1_1, button_chap1_2, button_chap1_3;
+    private TextView tv;
 //    float x1, x2, y1, y2;
 
     @Override
@@ -44,6 +63,13 @@ public class Chap1Activity extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         String email = user.getEmail();
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        user_id = user.getUid();
+        current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+        current_user_db_fname = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("FName");
+        current_user_db_lname = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("LName");
+        current_user_db_score = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("UserScore");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -70,8 +96,87 @@ public class Chap1Activity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         TextView navUsername = (TextView) headerView.findViewById(R.id.textEmail);
         navUsername.setText(email);
-
         CircleImageView img_profile = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.imageProfile);
+        score = (TextView) navigationView.getHeaderView(0).findViewById(R.id.Score_show);
+        Fname = (TextView) headerView.findViewById(R.id.textFName);
+        Lname = (TextView) headerView.findViewById(R.id.textLName);
+
+        Resources res = getResources();
+        Drawable drawable = res.getDrawable(R.drawable.custom_progressbar_drawable);
+        final ProgressBar mProgress = (ProgressBar) headerView.findViewById(R.id.circularProgressbar);
+        tv = (TextView) headerView.findViewById(R.id.tv);
+        //mProgress.setProgress(0);   Main Progress
+        mProgress.setSecondaryProgress(100); // Secondary Progress
+        mProgress.setMax(100); // Maximum Progress
+        mProgress.setProgressDrawable(drawable);
+
+        current_user_db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild("UserScore")) {
+                current_user_db_score.addValueEventListener(new ValueEventListener() {
+                    @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            mScore = dataSnapshot.getValue(Integer.class);
+                            Score = String.valueOf(mScore);
+                            score.setText(Score);
+
+                            mProgress.setProgress(mScore);
+                            tv.setText(Score + " %");
+
+                            if (mScore == 0){
+                                button_chap1_2.setEnabled(false);
+                                button_chap1_3.setEnabled(false);
+                            } else if (mScore == 1){
+                                button_chap1_2.setEnabled(true);
+                                button_chap1_3.setEnabled(false);
+                            } else if (mScore >= 2){
+                                button_chap1_2.setEnabled(true);
+                                button_chap1_3.setEnabled(true);
+                            }
+
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
+
+                } else {
+                    Map newpost = new HashMap();
+                    newpost.put("UserScore",0);
+                    current_user_db.updateChildren(newpost);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        current_user_db_fname.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String fname = dataSnapshot.getValue(String.class);
+                Fname.setText(fname);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        current_user_db_lname.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String lname = dataSnapshot.getValue(String.class);
+                Lname.setText(lname);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         if(AccessToken.getCurrentAccessToken()!=null) {
             email = user.getDisplayName();
@@ -97,7 +202,7 @@ public class Chap1Activity extends AppCompatActivity
             }
         };
 
-        Button button_chap1_1 = (Button) findViewById(R.id.img_Button1);
+        button_chap1_1 = (Button) findViewById(R.id.img_Button1);
 
         button_chap1_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +213,7 @@ public class Chap1Activity extends AppCompatActivity
             }
         });
 
-        Button button_chap1_2 = (Button) findViewById(R.id.img_Button2);
+        button_chap1_2 = (Button) findViewById(R.id.img_Button2);
 
         button_chap1_2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +224,7 @@ public class Chap1Activity extends AppCompatActivity
             }
         });
 
-        Button button_chap1_3 = (Button) findViewById(R.id.img_Button3);
+        button_chap1_3 = (Button) findViewById(R.id.img_Button3);
         button_chap1_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -181,7 +286,11 @@ public class Chap1Activity extends AppCompatActivity
             startActivity(new Intent(Chap1Activity.this,EditProfileActivity.class));
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_Setting) {
+
+            Map newpost = new HashMap();
+            newpost.put("UserScore",0);
+            current_user_db.updateChildren(newpost);
 
         } else if (id == R.id.nav_share) {
 
@@ -226,5 +335,6 @@ public class Chap1Activity extends AppCompatActivity
     protected void onStart(){
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
+
     }
 }

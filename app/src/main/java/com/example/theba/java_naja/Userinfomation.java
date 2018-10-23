@@ -2,35 +2,44 @@ package com.example.theba.java_naja;
 
 public class Userinfomation {
 
-    private String Email;
-    private String FName;
-    private String LName;
+    private String email;
+    private String fName;
+    private String lName;
+    private String score;
 
     public Userinfomation(){
 
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getFName() {
-        return FName;
+        return fName;
     }
 
     public void setFName(String FName) {
-        this.FName = FName;
+        this.fName = FName;
     }
 
     public String getLName() {
-        return LName;
+        return lName;
     }
 
     public void setLName(String LName) {
-        this.LName = LName;
+        this.lName = LName;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
     }
 }

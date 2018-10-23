@@ -30,7 +30,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     FirebaseUser user;
-    DatabaseReference current_user_db ,current_user_db_fName ,current_user_db_lName;
+    DatabaseReference current_user_db, current_user_db_fName, current_user_db_lName;
     DatabaseReference myRef;
 
     private EditText Email, FName, LName, Password, ConfirmPassword;
@@ -112,7 +112,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     newPost.put("FName", userFname);
                     newPost.put("LName", userLname);
                     //newPost.put("Password", userPwd);
-                    current_user_db.setValue(newPost);
+                    current_user_db.updateChildren(newPost);
 
                     Intent intent = new Intent(EditProfileActivity.this,MainActivity.class);
                     Toast.makeText(EditProfileActivity.this,"ทำการบันทึกประวัติของคุณแล้ว",Toast.LENGTH_LONG).show();

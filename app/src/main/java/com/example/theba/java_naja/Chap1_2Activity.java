@@ -37,7 +37,7 @@ public class Chap1_2Activity extends AppCompatActivity {
         Nextpage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Next = new Intent(Chap1_2Activity.this, Chap1_3Activity.class);
+                Intent Next = new Intent(Chap1_2Activity.this, QuizChap1_2Activity.class);
                 startActivity(Next);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }

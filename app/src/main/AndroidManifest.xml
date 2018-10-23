@@ -53,11 +53,16 @@
         </activity>
         <activity
             android:name=".RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ResetPasswordActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".EditProfileActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".EditProfileActivity" />
+        <activity
+            android:name=".QuizChap1_1Activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".QuizChap1_2Activity" />
+        <activity android:name=".QuizChap1_3Activity"></activity>
     </application>
 
 </manifest>
