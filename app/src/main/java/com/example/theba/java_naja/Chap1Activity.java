@@ -280,11 +280,15 @@ public class Chap1Activity extends AppCompatActivity
             finish();
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             // Handle the camera action
         } else if (id == R.id.nav_Editprofile) {
             startActivity(new Intent(Chap1Activity.this,EditProfileActivity.class));
-        } else if (id == R.id.nav_slideshow) {
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (id == R.id.nav_Achievement) {
+
+            startActivity(new Intent(Chap1Activity.this,AchievementActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         } else if (id == R.id.nav_Setting) {
 

@@ -14,6 +14,13 @@
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="score">0</string>
+    <string name="Chapter1">บทที่ 1</string>
+    <string name="Chapter2">บทที่ 2</string>
+    <string name="Chapter3">บทที่ 3</string>
+    <string name="Chapter4">บทที่ 4</string>
+    <string name="Chapter5">บทที่ 5</string>
+    <string name="Chapter6">บทที่ 6</string>
+    <string name="Chapter7">บทที่ 7</string>
 
     <!--CHAPTER 1-1-->
     <string name="Content1_1Leader">บทที่ 1\nภาษาคอมพิวเตอร์และการพัฒนาโปรแกรม</string>

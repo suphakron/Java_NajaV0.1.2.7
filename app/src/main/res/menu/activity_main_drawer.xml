@@ -13,7 +13,7 @@
             android:icon="@drawable/brain_health"
             android:title="แก้ไขข้อมูลส่วนตัว" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_Achievement"
             android:icon="@drawable/podium"
             android:title="ความสำเร็จ" />
         <item

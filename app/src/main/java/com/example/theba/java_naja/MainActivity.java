@@ -289,9 +289,18 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_HOME) {
             // Handle the camera action
         } else if (id == R.id.nav_Editprofile) {
+            Intent intent = new Intent(MainActivity.this, EditProfileActivity.class);
             finish();
-            startActivity(new Intent(MainActivity.this,EditProfileActivity.class));
-        } else if (id == R.id.nav_slideshow) {
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (id == R.id.nav_Achievement) {
+
+            Intent intent = new Intent(MainActivity.this, AchievementActivity.class);
+            finish();
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         } else if (id == R.id.nav_Setting) {
 
