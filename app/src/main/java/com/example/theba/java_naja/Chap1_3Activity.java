@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -70,7 +71,12 @@ public class Chap1_3Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mScore = dataSnapshot.getValue(Integer.class);
+
                 if(mScore>=3){
+
+                    final Drawable top = getResources().getDrawable(R.drawable.book);
+                    Nextpage.setCompoundDrawables(null,top,null,null);
+
                     Nextpage.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
