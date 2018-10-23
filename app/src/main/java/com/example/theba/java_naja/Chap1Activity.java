@@ -277,10 +277,10 @@ public class Chap1Activity extends AppCompatActivity
 
         if (id == R.id.nav_HOME) {
             Intent intent = new Intent(Chap1Activity.this, MainActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             finish();
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             // Handle the camera action
         } else if (id == R.id.nav_Editprofile) {
             startActivity(new Intent(Chap1Activity.this,EditProfileActivity.class));
