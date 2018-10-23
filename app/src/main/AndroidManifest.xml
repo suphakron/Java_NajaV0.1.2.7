@@ -62,8 +62,9 @@
             android:name=".QuizChap1_1Activity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".QuizChap1_2Activity" />
-        <activity android:name=".QuizChap1_3Activity"></activity>
-        <activity android:name=".AchievementActivity"/>
+        <activity android:name=".QuizChap1_3Activity" />
+        <activity android:name=".AchievementActivity" />
+        <activity android:name=".Achieve_Chap1Activity"></activity>
     </application>
 
 </manifest>
