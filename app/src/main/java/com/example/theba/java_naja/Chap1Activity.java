@@ -296,7 +296,11 @@ public class Chap1Activity extends AppCompatActivity
             newpost.put("UserScore",0);
             current_user_db.updateChildren(newpost);
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_help) {
+
+            Map newpost = new HashMap();
+            newpost.put("UserScore",3);
+            current_user_db.updateChildren(newpost);
 
         } else if (id == R.id.nav_send) {
 

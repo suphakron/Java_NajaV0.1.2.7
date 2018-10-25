@@ -307,8 +307,14 @@ public class MainActivity extends AppCompatActivity
             Map newpost = new HashMap();
             newpost.put("UserScore",0);
             current_user_db.updateChildren(newpost);
+            Toast.makeText(MainActivity.this,"Score Reset : 0",Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_help) {
+
+            Map newpost = new HashMap();
+            newpost.put("UserScore",3);
+            current_user_db.updateChildren(newpost);
+            Toast.makeText(MainActivity.this,"Score Update : 3",Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_send) {
 
