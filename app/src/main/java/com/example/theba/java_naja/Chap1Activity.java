@@ -3,6 +3,8 @@ package com.example.theba.java_naja;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -73,7 +75,8 @@ public class Chap1Activity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitleTextColor(Color.parseColor("#d78c01"));
+        toolbar.setBackgroundColor(Color.parseColor("#8cc63e"));
+        //toolbar.setTitleTextColor(Color.parseColor("#d78c01"));
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -125,14 +128,34 @@ public class Chap1Activity extends AppCompatActivity
                             tv.setText(Score + " %");
 
                             if (mScore == 0){
+                                button_chap1_1.getBackground().setColorFilter(Color.parseColor("#bebcbc"), PorterDuff.Mode.MULTIPLY);
                                 button_chap1_2.setEnabled(false);
+                                button_chap1_2.getBackground().setColorFilter(Color.parseColor("#e3e3e3"), PorterDuff.Mode.MULTIPLY);
+                                //#20000000
                                 button_chap1_3.setEnabled(false);
+                                button_chap1_3.getBackground().setColorFilter(Color.parseColor("#e3e3e3"), PorterDuff.Mode.MULTIPLY);
+                                button_chap1_3.setTextColor(Color.parseColor("#80000000"));
                             } else if (mScore == 1){
+                                button_chap1_1.getBackground().setColorFilter(Color.parseColor("#aee663"), PorterDuff.Mode.MULTIPLY);
                                 button_chap1_2.setEnabled(true);
+                                button_chap1_2.getBackground().setColorFilter(Color.parseColor("#bebcbc"), PorterDuff.Mode.MULTIPLY);
+                                //#20000000
                                 button_chap1_3.setEnabled(false);
-                            } else if (mScore >= 2){
+                                button_chap1_3.getBackground().setColorFilter(Color.parseColor("#e3e3e3"), PorterDuff.Mode.MULTIPLY);
+                                button_chap1_3.setTextColor(Color.parseColor("#80000000"));
+                            } else if (mScore == 2){
+                                button_chap1_1.getBackground().setColorFilter(Color.parseColor("#aee663"), PorterDuff.Mode.MULTIPLY);
+
                                 button_chap1_2.setEnabled(true);
+                                button_chap1_2.getBackground().setColorFilter(Color.parseColor("#aee663"), PorterDuff.Mode.MULTIPLY);
                                 button_chap1_3.setEnabled(true);
+                                button_chap1_3.getBackground().setColorFilter(Color.parseColor("#bebcbc"), PorterDuff.Mode.MULTIPLY);
+                            } else if (mScore >= 3){
+                                button_chap1_1.getBackground().setColorFilter(Color.parseColor("#aee663"), PorterDuff.Mode.MULTIPLY);
+                                button_chap1_2.setEnabled(true);
+                                button_chap1_2.getBackground().setColorFilter(Color.parseColor("#aee663"), PorterDuff.Mode.MULTIPLY);
+                                button_chap1_3.setEnabled(true);
+                                button_chap1_3.getBackground().setColorFilter(Color.parseColor("#aee663"), PorterDuff.Mode.MULTIPLY);
                             }
 
                         }

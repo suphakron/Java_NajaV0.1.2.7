@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.session.MediaSession;
 import android.net.Uri;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("หน้าหลัก");
+        toolbar.setBackgroundColor(Color.parseColor("#8cc63e"));
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
@@ -207,8 +209,6 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        });
 
-
-
         Button button_chap1 = (Button) findViewById(R.id.img_Button1);
 
         button_chap1.setOnClickListener(new View.OnClickListener() {
@@ -225,6 +225,73 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        Button button_chap2 = (Button) findViewById(R.id.img_Button2);
+
+        button_chap2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Chapter2 = new Intent(MainActivity.this,Chap2Activity.class);
+                startActivity(Chapter2);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+        Button button_chap3 = (Button) findViewById(R.id.img_Button3);
+
+        button_chap3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Chapter3 = new Intent(MainActivity.this,Chap3Activity.class);
+                startActivity(Chapter3);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+        Button button_chap4 = (Button) findViewById(R.id.img_Button4);
+
+        button_chap4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Chapter4 = new Intent(MainActivity.this,Chap4Activity.class);
+                startActivity(Chapter4);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+        Button button_chap5 = (Button) findViewById(R.id.img_Button5);
+
+        button_chap5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Chapter5 = new Intent(MainActivity.this,Chap5Activity.class);
+                startActivity(Chapter5);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+
+        Button button_chap6 = (Button) findViewById(R.id.img_Button6);
+
+        button_chap6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Chapter6 = new Intent(MainActivity.this,Chap6Activity.class);
+                startActivity(Chapter6);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+        Button button_chap7 = (Button) findViewById(R.id.img_Button7);
+
+        button_chap7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Chapter7 = new Intent(MainActivity.this,Chap7Activity.class);
+                startActivity(Chapter7);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
     }
 
     @Override
